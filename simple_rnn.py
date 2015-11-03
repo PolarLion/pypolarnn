@@ -111,9 +111,11 @@ model = RNNTheano(vocabulary_size)
 # print o
 l = [8,9,0,1,2,3,4,5,6,7]
 x = np.asarray([np.int32(a) for a in l])
+l2 = [3,4,5,9,0,1]
+x2 = np.asarray([np.int32(a) for a in l2])
 # x = np.asarray([np.int32(a) for a in range(0,10)])
 # print x, type(x)
-print "input", x
+print "input", x, x2
 # x[0] = 10
 # print x, type(x)
 # o = model.forward_propagation(x)
@@ -121,10 +123,10 @@ print "input", x
 
 predictions = model.predict(x)
 # print predictions.shape
-print "befor trained", predictions
+print "befor trained", predictions, model.predict(x2)
 
 # %timeit model.sgd_step(X_train[10], y_train[10], 0.005)
 # train_with_sgd(model, X_train, Y_train, nepoch=10)
 train_with_sgd(model, X_train, Y_train, nepoch=5)
 predictions = model.predict(x)
-print "after trained", predictions
+print "after trained", predictions, model.predict(x2)
